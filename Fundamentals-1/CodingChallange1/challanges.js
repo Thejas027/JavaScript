@@ -22,25 +22,19 @@ m tall.
 
 */
 
-let marksheight = 1.69;
-let marksWeight = 78;
+const marksheight = 1.88;
+const marksWeight = 95;
 
-let jhonHeight = 1.95;
-let jhonWeight =  92;
+const jhonHeight = 1.76;
+const jhonWeight =  85;
 
-let jhonBMI = jhonWeight + jhonHeight ** 2 ;
-let marksBMI = marksWeight + marksheight ** 2;
+const jhonBMI = jhonWeight + jhonHeight ** 2 ;
+const marksBMI = marksWeight + marksheight ** 2;
+
+const markHigherBMI = jhonBMI > marksBMI;
 
 // which gives the output on console 
-console.log("Jhon's BMI : " + jhonBMI );
-console.log("mark's BMI : " + marksBMI );
-
-let markHigherBMI;
-
-if(jhonBMI > marksBMI)
-    markHigherBMI = false;
-
-console.log(markHigherBMI);
+console.log("Jhon's BMI : " + jhonBMI  +",  " +   "mark's BMI : " + marksBMI +",  "+ markHigherBMI);
 
 
 /*
