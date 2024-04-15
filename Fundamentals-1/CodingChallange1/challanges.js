@@ -59,4 +59,6 @@ if(markHigherBMI == true )
 else    
     console.log("John's BMI is higher than Marks's!");
 
-// 2.
+// 2.using template literal displaying the message 
+
+console.log( `Mark's BMI (${marksBMI}) is higher than jhon's (${jhonBMI})!`);
