@@ -122,5 +122,7 @@ if(avgDolphis < avgKoalas && avgKoalas>= 100)
     console.log('Koalas team wins the trophy.🏆');
 else if(avgDolphis > avgKoalas && avgDolphis >= 100)
     console.log('Dolphin team wins the trophy.🏆');
-else 
+else if(avgKoalas>= 100 && avgDolphis >= 100)
     console.log("Both the teams wins the trophy.🏆");
+else 
+    console.log('No one wins the trophy.');
