@@ -1,7 +1,7 @@
 /*
-JavaScript Fundamentals – Part 2
+                                            JavaScript Fundamentals – Part 2
 
-Coding Challenge #1
+        Coding Challenge #1
 
 Back to the two gymnastics teams, the Dolphins and the Koalas! There is a new 
 gymnastics discipline, which works differently.
@@ -49,7 +49,7 @@ function checkWinner(dolphinAvg,koalasAvg){
 
 
  /*
-Coding Challenge #2
+            Coding Challenge #2
 
 Steven is still building his tip calculator, using the same rules as before: Tip 15% of 
 the bill if the bill value is between 50 and 300, and if the value is different, the tip is 
@@ -93,3 +93,72 @@ console.log(`The bill : ${bills}
 The tip : ${tips}
 
 The total (bill + total) ; ${total}`);
+
+
+/*
+              Coding Challenge #3
+
+Let's go back to Mark and John comparing their BMIs! This time, let's use objects to 
+implement the calculations! Remember: BMI = mass / height ** 2 = mass 
+/ (height * height) (mass in kg and height in meter) 
+
+Your tasks:
+1. For each of them, create an object with properties for their full name, mass, and 
+height (Mark Miller and John Smith)
+
+2. Create a 'calcBMI' method on each object to calculate the BMI (the same 
+method on both objects). Store the BMI value to a property, and also return it 
+from the method
+
+
+
+3. Log to the console who has the higher BMI, together with the full name and the 
+respective BMI. Example: "John's BMI (28.3) is higher than Mark's (23.9)!"
+
+Test data: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m 
+tall
+
+*/
+const mark = {
+    firstName : 'Mark',
+    lastName : 'Miller',
+    weight : 78,
+    height: 1.69,
+
+    // method to calculate the BMI of mark only and returns it 
+    calcBMI : function(){
+        this.bmi = this.weight / (this.height ** 2)   // the BMI of mark is stored in a new property called bmi
+        return this.bmi;
+    }
+
+}
+
+const jhon = {
+    firstName : 'Jhon',
+    lastName : 'Smith',
+    weight : 92,
+    height : 1.95,
+
+    // method to calculate the BMI of jhon and return it 
+    calcBMI : function(){
+        this.bmi = this.weight / (this.height * this.height);  // the BMI of mark is stored in a new property called bmi 
+        return this.bmi;
+    }
+    
+}
+
+// method - 1 to call the bmi 
+// const jhonBmi = jhon.calcBMI();  // first call the function from a object then 
+// console.log(`The Bmi of Jhon smith : ${jhonBmi}`);  // console the property 
+
+// method-2  , directly call the function itself 
+// console.log(jhon.calcBMI());
+
+// const markBmi = mark.calcBMI();
+// console.log(`The Bmi of Mark Miller : ${markBmi}`);
+
+
+if(jhon.calcBMI() > mark.calcBMI())
+    console.log(`${jhon.firstName}'s BMI : ( ${jhon.calcBMI()} ) is higher than ${mark.firstName}'s(  ${mark.calcBMI()} )`);  
+else    
+    console.log(`${mark.firstName}'s BMI : ( ${mark.calcBMI()} ) is higher than ${jhon.firstName}'s ( ${jhon.calcBMI()} )`);
