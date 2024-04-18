@@ -21,21 +21,28 @@ m tall.
 m tall.
 
 */
-
+console.log("------------challange-1----------------");
 const marksheight = 1.88;
 const marksWeight = 95;
 
 const jhonHeight = 1.76;
-const jhonWeight =  85;
+const jhonWeight = 85;
 
-const jhonBMI = jhonWeight + jhonHeight ** 2 ;
+const jhonBMI = jhonWeight + jhonHeight ** 2;
 const marksBMI = marksWeight + marksheight ** 2;
 
 const markHigherBMI = jhonBMI > marksBMI;
 
-// which gives the output on console 
-console.log("Jhon's BMI : " + jhonBMI  +",  " +   "mark's BMI : " + marksBMI +",  "+ markHigherBMI);
-
+// which gives the output on console
+console.log(
+  "Jhon's BMI : " +
+    jhonBMI +
+    ",  " +
+    "mark's BMI : " +
+    marksBMI +
+    ",  " +
+    markHigherBMI
+);
 
 /*
 Coding Challenge #2
@@ -51,18 +58,15 @@ is either "Mark's BMI is higher than John's!" or "John's BMI is higher than Mark
 BMI (28.3) is higher than John's (23.9)!"
 
 */
-  
 
-// 1. 
-if(markHigherBMI == true )
-     console.log("Mark's BMI is higher than John;s!");
-else    
-    console.log("John's BMI is higher than Marks's!");
+console.log("------------challange-2----------------");
+// 1.
+if (markHigherBMI == true) console.log("Mark's BMI is higher than John;s!");
+else console.log("John's BMI is higher than Marks's!");
 
-// 2.using template literal displaying the message 
+// 2.using template literal displaying the message
 
-console.log( `Mark's BMI (${marksBMI}) is higher than jhon's (${jhonBMI})!`);
-
+console.log(`Mark's BMI (${marksBMI}) is higher than jhon's (${jhonBMI})!`);
 
 /*
 Coding Challenge #3
@@ -92,40 +96,36 @@ Test data:
 § Data Bonus 2: Dolphins score 97, 112 and 101. Koalas score 109, 95 and 106
 */
 
-// data of Dolphin team with avg 
+console.log("------------challange-3----------------");
+// data of Dolphin team with avg
 const dolphinData1 = 96;
 const dolphinData2 = 89;
 const dolphinData3 = 101;
-const avgDolphis = (dolphinData1 + dolphinData2 + dolphinData3 ) / 3 ;
+const avgDolphis = (dolphinData1 + dolphinData2 + dolphinData3) / 3;
 
-// data of Koalas team with avg 
+// data of Koalas team with avg
 const koalasData1 = 96;
 const koalasData2 = 10;
 const koalasData3 = 106;
-const avgKoalas = (koalasData1 + koalasData2 + koalasData3 ) / 3;
+const avgKoalas = (koalasData1 + koalasData2 + koalasData3) / 3;
 
-// console which displays who has higher average 
+// console which displays who has higher average
 console.log(`avg of Dolphin team : (${avgDolphis})
 avg of Koalas team L (${avgKoalas})`);
 
-// problem statement 2 to print who has avg 
-if(avgDolphis === avgKoalas)
-    console.log("Both the teams wins the trophy.🏆");
-else if(avgDolphis > avgKoalas)
-    console.log('Dolphin team wins the trophy.🏆');
-else 
-    console.log('Koalas team wins the trophy.🏆');
+// problem statement 2 to print who has avg
+if (avgDolphis === avgKoalas) console.log("Both the teams wins the trophy.🏆");
+else if (avgDolphis > avgKoalas) console.log("Dolphin team wins the trophy.🏆");
+else console.log("Koalas team wins the trophy.🏆");
 
-
-// Bonus part 
-if(avgDolphis < avgKoalas && avgKoalas>= 100)
-    console.log('Koalas team wins the trophy.🏆');
-else if(avgDolphis > avgKoalas && avgDolphis >= 100)
-    console.log('Dolphin team wins the trophy.🏆');
-else if(avgKoalas>= 100 && avgDolphis >= 100)
-    console.log("Both the teams wins the trophy.🏆");
-else 
-    console.log('No one wins the trophy.');
+// Bonus part
+if (avgDolphis < avgKoalas && avgKoalas >= 100)
+  console.log("Koalas team wins the trophy.🏆");
+else if (avgDolphis > avgKoalas && avgDolphis >= 100)
+  console.log("Dolphin team wins the trophy.🏆");
+else if (avgKoalas >= 100 && avgDolphis >= 100)
+  console.log("Both the teams wins the trophy.🏆");
+else console.log("No one wins the trophy.");
 
 /*
 Coding Challenge #4
@@ -153,8 +153,11 @@ Hints:
 GOOD LUCK 
 */
 
+console.log("------------challange-4----------------");
 const bill = 430;
-const tip = bill >= 50 && bill <=300 ? bill * 0.15 : bill * 0.2;
-console.log(tip );
+const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+console.log(tip);
 
-console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill+tip}`);
+console.log(
+  `The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`
+);
