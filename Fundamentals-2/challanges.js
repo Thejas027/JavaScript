@@ -1,4 +1,4 @@
-    'use strict';
+"use strict";
 /*
                                             JavaScript Fundamentals – Part 2
 
@@ -29,27 +29,25 @@ Test data:
 § Data 2: Dolphins score 85, 54 and 41. Koalas score 23, 34 and 27
 
 */
-    console.log("------------------challange-1--------------------");
-// general arrow function to find the average of any team 
-const avg = (data1,data2,data3)=> (data1+data2+data3) / 3;
+console.log("------------------challange-1--------------------");
+// general arrow function to find the average of any team
+const avg = (data1, data2, data3) => (data1 + data2 + data3) / 3;
 
-// consoles the calculated average of dolphin and koalas 
-console.log(`Average of Dolphin : ${avg(85,54,41)}`);   // change the data as requried 
-console.log(`Average of Koalas : ${avg(23,34,27)}`);
+// consoles the calculated average of dolphin and koalas
+console.log(`Average of Dolphin : ${avg(85, 54, 41)}`); // change the data as requried
+console.log(`Average of Koalas : ${avg(23, 34, 27)}`);
 
-// function to check who is the winner 
-function checkWinner(dolphinAvg,koalasAvg){
-    if(dolphinAvg >= 2*koalasAvg)
-        console.log(`Dolphin team wins the game.(${dolphinAvg} vs ${koalasAvg})`);
-    else if(koalasAvg >= 2*dolphinAvg)
-        console.log(`Koalas team wins the game .(${koalasAvg} vs ${dolphinAvg})`);     
-    else 
-        console.log(`It's a draw. No one wins`) 
+// function to check who is the winner
+function checkWinner(dolphinAvg, koalasAvg) {
+  if (dolphinAvg >= 2 * koalasAvg)
+    console.log(`Dolphin team wins the game.(${dolphinAvg} vs ${koalasAvg})`);
+  else if (koalasAvg >= 2 * dolphinAvg)
+    console.log(`Koalas team wins the game .(${koalasAvg} vs ${dolphinAvg})`);
+  else console.log(`It's a draw. No one wins`);
 }
- checkWinner(avg(85,54,41),avg(85,54,41));
+checkWinner(avg(85, 54, 41), avg(85, 54, 41));
 
-
- /*
+/*
             Coding Challenge #2
 
 Steven is still building his tip calculator, using the same rules as before: Tip 15% of 
@@ -74,27 +72,28 @@ the function you created before
 Test data: 125, 555 and 44
 
  */
-    console.log("-------------------------challange-2------------");
-function calcTip(bill){
-    if(bill >=50 && bill <= 300)
-        return bill * 0.15;
-    if(bill > 300)
-        return bill * 20;
-    return 0;
+console.log("-------------------------challange-2------------");
+function calcTip(bill) {
+  if (bill >= 50 && bill <= 300) return bill * 0.15;
+  if (bill > 300) return bill * 20;
+  return 0;
 }
 
 console.log(`The tip is : ${calcTip(100)}`);
 
-const bills = new Array(125,555,44);
-const tips = new Array(calcTip(125),calcTip(555),calcTip(44));
-const total = new Array(bills[0]+ tips[0] ,bills[1]+tips[1],tips[tips.length-1]+bills[bills.length-1]);
+const bills = new Array(125, 555, 44);
+const tips = new Array(calcTip(125), calcTip(555), calcTip(44));
+const total = new Array(
+  bills[0] + tips[0],
+  bills[1] + tips[1],
+  tips[tips.length - 1] + bills[bills.length - 1]
+);
 
 console.log(`The bill : ${bills}
 
 The tip : ${tips}
 
 The total (bill + total) ; ${total}`);
-
 
 /*
               Coding Challenge #3
@@ -123,50 +122,55 @@ tall
 
 console.log("---------------------challange-2------------------");
 const mark = {
-    firstName : 'Mark',
-    lastName : 'Miller',
-    weight : 78,
-    height: 1.69,
+  firstName: "Mark",
+  lastName: "Miller",
+  weight: 78,
+  height: 1.69,
 
-    // method to calculate the BMI of mark only and returns it 
-    calcBMI : function(){
-        this.bmi = this.weight / (this.height ** 2)   // the BMI of mark is stored in a new property called bmi
-        return this.bmi;
-    }
-
-}
+  // method to calculate the BMI of mark only and returns it
+  calcBMI: function () {
+    this.bmi = this.weight / this.height ** 2; // the BMI of mark is stored in a new property called bmi
+    return this.bmi;
+  },
+};
 
 const jhon = {
-    firstName : 'Jhon',
-    lastName : 'Smith',
-    weight : 92,
-    height : 1.95,
+  firstName: "Jhon",
+  lastName: "Smith",
+  weight: 92,
+  height: 1.95,
 
-    // method to calculate the BMI of jhon and return it 
-    calcBMI : function(){
-        this.bmi = this.weight / (this.height * this.height);  // the BMI of mark is stored in a new property called bmi 
-        return this.bmi;
-    }
-    
-}
+  // method to calculate the BMI of jhon and return it
+  calcBMI: function () {
+    this.bmi = this.weight / (this.height * this.height); // the BMI of mark is stored in a new property called bmi
+    return this.bmi;
+  },
+};
 
-// method - 1 to call the bmi 
-// const jhonBmi = jhon.calcBMI();  // first call the function from a object then 
-// console.log(`The Bmi of Jhon smith : ${jhonBmi}`);  // console the property 
+// method - 1 to call the bmi
+// const jhonBmi = jhon.calcBMI();  // first call the function from a object then
+// console.log(`The Bmi of Jhon smith : ${jhonBmi}`);  // console the property
 
-// method-2  , directly call the function itself 
+// method-2  , directly call the function itself
 // console.log(jhon.calcBMI());
 
 // const markBmi = mark.calcBMI();
 // console.log(`The Bmi of Mark Miller : ${markBmi}`);
 
+if (jhon.calcBMI() > mark.calcBMI())
+  console.log(
+    `${jhon.firstName}'s BMI : ( ${jhon.calcBMI()} ) is higher than ${
+      mark.firstName
+    }'s(  ${mark.calcBMI()} )`
+  );
+else
+  console.log(
+    `${mark.firstName}'s BMI : ( ${mark.calcBMI()} ) is higher than ${
+      jhon.firstName
+    }'s ( ${jhon.calcBMI()} )`
+  );
 
-if(jhon.calcBMI() > mark.calcBMI())
-    console.log(`${jhon.firstName}'s BMI : ( ${jhon.calcBMI()} ) is higher than ${mark.firstName}'s(  ${mark.calcBMI()} )`);  
-else    
-    console.log(`${mark.firstName}'s BMI : ( ${mark.calcBMI()} ) is higher than ${jhon.firstName}'s ( ${jhon.calcBMI()} )`);
-
-    /*
+/*
                     Coding Challenge #4
 
                     Let's improve Steven's tip calculator even more, this time using loops!
@@ -205,30 +209,29 @@ length of the array (because that's the number of elements)
 
 console.log("-------------challange-3---------------");
 
-const steveBills = [22,295,176,440,37,105,10,1100,86,52];
-const steveTips =[];
-const steveTotals =[];
+const steveBills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const steveTips = [];
+const steveTotals = [];
 
 // loop to find the tips for the bill data
-for(let i=0;i<steveBills.length;i++){
-    steveTips.push(calcTip(steveBills[i]));
-    steveTotals[i] = steveBills[i] + steveTips[i];
+for (let i = 0; i < steveBills.length; i++) {
+  steveTips.push(calcTip(steveBills[i]));
+  steveTotals[i] = steveBills[i] + steveTips[i];
 }
-// console to print the bills 
+// console to print the bills
 console.log(`The bill : ${steveBills}`);
-// consloes the tip for each bill and prints 
+// consloes the tip for each bill and prints
 console.log(`The tips : ${steveTips}`);
-//console to print the calculated total 
+//console to print the calculated total
 console.log(`The total ( bill + tip ) : ${steveTotals}`);
 
-// code snippent to find the sum of a given array and calcualte its average 
+// code snippent to find the sum of a given array and calcualte its average
 console.log("-------Using loops to find the sum and average-------");
-const arr = [1,2,3,4,5,6,7,8,9,10];
-function arraySum(arr){
-    let sum = 0;
-    for(let i=0; i<arr.length;i++)
-        sum += arr[i];
-        return sum;
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+function arraySum(arr) {
+  let sum = 0;
+  for (let i = 0; i < arr.length; i++) sum += arr[i];
+  return sum;
 }
 console.log(`Sum of an array elements : ${arraySum(arr)}`);
 console.log(`The average of sum : ${arraySum(arr) / arr.length}`);
