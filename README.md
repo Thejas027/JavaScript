@@ -23,3 +23,13 @@ Explore a range of coding challenges categorized into three subfolders:
 Guess Number Project is an interactive JavaScript project where users guess a number within a specified range.
 
 Feel free to dive in, explore, and have fun with these projects! ✨
+
+## 3.Modal Window 🖼️
+
+Modal Window project showcase the implementation of modal dialogs in JavaScript displaying information or capturing user input.
+
+## 4. Pig Game 🐷
+
+Pig Game is a classic dice game implemented in JavaScript. Roll the dice, accumulate points, and strategize to win against your opponent.
+
+Feel free to dive in, explore, and have fun with these projects! ✨
