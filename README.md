@@ -35,5 +35,3 @@ Pig Game is a classic dice game implemented in JavaScript. Roll the dice, accumu
 Starbucks Landing Page project demonstrates the creation of a captivating landing page for a Starbucks website using HTML, CSS, and JavaScript.
 
 Feel free to dive in, explore, and have fun with these projects! ✨
-
-Click on the project titles above to navigate to their corresponding folders.
