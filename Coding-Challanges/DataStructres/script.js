@@ -1,5 +1,5 @@
 'use strict';
-
+// -----------------coding challange -1
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -40,6 +40,8 @@ const game = {
     team2: 6.5,
   },
 };
+
+console.log('\n------------CODING CHALLANGE-1\n');
 
 //TASKS AND THEIR SOLUTIONS
 // 1. Create one player array for each team (variables 'players1' and 'players2')
@@ -111,3 +113,62 @@ printGoals(...game.scored);
 // operator
 team1 < team2 && console.log('Team 1 is likely to win the game '); // for team 1
 team1 > team2 && console.log('Team 2 is likely to win thr game'); // for team 2
+
+// ------------------------coding challange-2
+/*
+
+Let's continue with our football betting app! Keep using the 'game' variable from 
+before.
+
+Your tasks:
+1. Loop over the game.scored array and print each player name to the console, 
+along with the goal number (Example: "Goal 1: Lewandowski")
+
+2. Use a loop to calculate the average odd and log it to the console (We already 
+studied how to calculate averages, you can go check if you don't remember)
+
+3. Print the 3 odds to the console, but in a nice formatted way, exactly like this:
+Odd of victory Bayern Munich: 1.33
+Odd of draw: 3.25
+Odd of victory Borrussia Dortmund: 6.5
+Get the team names directly from the game object, don't hardcode them 
+(except for "draw"). Hint: Note how the odds and the game objects have the 
+same property names 
+
+4. Bonus: Create an object called 'scorers' which contains the names of the 
+players who scored as properties, and the number of goals as the value. In this 
+game, it will look like this:
+{
+ Gnarby: 1,
+ Hummels: 1,
+ Lewandowski: 2
+}
+*/
+console.log('\n-------coding challange-2\n');
+
+// 1. soultion
+console.log('\n------solution-1\n');
+for (const [i, goals] of game.scored.entries())
+  console.log(`Goal ${i + 1} : ${goals}`);
+
+//2.solution
+console.log('\n------solution-2\n');
+let average = 0;
+let odds = Object.values(game.odds);
+for (const odd of odds) average += odd;
+average /= odds.length;
+console.log(`The average of the odds : ${average} `);
+
+//3.solution
+console.log('\n------solution-3\n');
+for (const [team, odds] of Object.entries(game.odds)) {
+  const teamStr = team === 'x' ? 'draw' : `victory ${team}`;
+  console.log(`odd ${teamStr} : ${odds}`);
+}
+
+//bonus solution
+let scorers = {};
+for (const goals of game.scored)
+  scorers[goals] ? scorers[goals]++ : (scorers[goals] = 1);
+
+console.log(scorers);
