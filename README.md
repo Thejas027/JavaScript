@@ -30,8 +30,5 @@ Modal Window project showcases the implementation of modal dialogs in JavaScript
 
 Pig Game is a classic dice game implemented in JavaScript. Roll the dice, accumulate points, and strategize to win against your opponent.
 
-## Starbucks Landing Page ☕️
-
-Starbucks Landing Page project demonstrates the creation of a captivating landing page for a Starbucks website using HTML, CSS, and JavaScript.
 
 Feel free to dive in, explore, and have fun with these projects! ✨
