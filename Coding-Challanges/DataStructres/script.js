@@ -209,7 +209,7 @@ const gameEvents = new Map([
   [80, '⚽ GOAL'],
   [92, '🟡 Yellow card'],
 ]);
-console.log('\n\n---------coding challange-3')
+console.log('\n\n---------coding challange-3');
 //1.solution
 const events = new Set(gameEvents.values());
 console.log(events);
@@ -217,11 +217,71 @@ console.log(events);
 //2.solution
 gameEvents.delete(64);
 console.log(gameEvents);
-//3.solution 
+//3.solution
 const avg = 90 / gameEvents.size;
 console.log(`An event had happened on average , every ${avg} minutes`);
-//4.solution 
+//4.solution
 for (const [min, event] of gameEvents) {
   const half = min <= 45 ? 'FIRST' : 'SECOND';
   console.log(`[${half} HALF] : ${event}`);
 }
+
+/*
+------------------------Coding Challenge #4
+
+Write a program that receives a list of variable names written in underscore_case 
+and convert them to camelCase.
+
+The input will come from a textarea inserted into the DOM (see code below to 
+insert the elements), and conversion will happen when the button is pressed.
+Test data (pasted to textarea, including spaces):
+
+underscore_case
+first_name
+Some_Variable 
+calculate_AGE
+delayed_departure
+Should produce this output (5 separate console.log outputs):
+underscoreCase ✅
+firstName ✅✅
+someVariable ✅✅✅
+calculateAge ✅✅✅✅
+delayedDeparture ✅✅✅✅✅
+
+*/
+
+console.log('---------coding challange-4');
+// creates the input and button feild on the
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+document.querySelector('button').addEventListener('click', function () {
+  const txt = document.querySelector('textarea').value;
+  const rows = txt.split('\n');
+  console.log(rows);
+
+  for (const [i, row] of rows.entries()) {
+    const [first, second] = row.toLowerCase().trim().split('_');
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
+  }
+});
+
+// desiging button using dom manipulation
+const button = document.querySelector('button');
+button.style.width = '5rem';
+button.style.height = '2rem';
+button.style.position = 'relative'; 
+button.style.left = '30rem';
+button.style.top = '8rem';
+button.style.backgroundColor = '#008000';
+button.textContent = 'click me';
+
+const txtArea = document.querySelector('textarea');
+txtArea.style.width ='25rem';
+txtArea.style.height = '10rem';
+txtArea.style.position = 'absolute';
+txtArea.style.left = '3rem';
