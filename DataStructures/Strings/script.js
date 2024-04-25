@@ -41,3 +41,55 @@ console.log(airLine.toUpperCase());
 const passengerName = 'jOnAs';
 const lowerName = passengerName.toLowerCase();
 const correctName = lowerName[0].toUpperCase() + lowerName.slice(1);
+
+//comparing emails
+const email = 'hello@jonas.io';
+const loginMail = '  Hello@Jonas.Io';
+
+// to compare the mails , now follow the step to get truthy value
+// const lowerMail = loginMail.toLowerCase();
+// const trimmedMail = lowerMail.trim();
+
+// above those 2 steps can be minimized into a single step
+const normalizedMail = loginMail.toLowerCase().trim();
+console.log(normalizedMail);
+
+console.log(email === normalizedMail);
+
+// replace
+const priceGB = '298,45💷';
+const priceUS = priceGB.replace(',', '.').replace('💷', '💵');
+console.log(priceUS);
+
+const annocument = 'All passangers comt to boarding door 23, boarding door 23';
+console.log(annocument.replace('door', 'gate')); // observe the differece
+console.log(annocument.replaceAll('door', 'gate'));
+
+//using regular expression , it can be replaced
+console.log(annocument.replace(/door/g, 'gate'));
+
+//string methods that returns booleans
+const planeName = 'Airbus AST320neo';
+console.log(planeName.includes('Air'));
+console.log(planeName.includes('Air'));
+console.log(planeName.startsWith('A'));
+
+if (planeName.startsWith('A') && planeName.endsWith('ne'))
+  console.log('Its a plane name');
+else console.log('It does not belongs to planes');
+
+//practise execrise
+
+const checkBaggage = function (item) {
+  const bag = item.toLowerCase(); // converting the string into lowe case so comparison becomes easier
+  if (bag.includes('knife') || bag.includes('gun'))
+    console.log('you are not allowed to board');
+  else console.log('welcome to our boarding');
+};
+checkBaggage('i have headphones,laptop and a charger');
+
+checkBaggage(
+  'i have laptop and some some snacks to eat and a gun for protection'
+);
+
+checkBaggage('i have some snacks and have a pocket Knife');
