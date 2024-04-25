@@ -209,7 +209,7 @@ const gameEvents = new Map([
   [80, '⚽ GOAL'],
   [92, '🟡 Yellow card'],
 ]);
-console.log('\n\n---------coding challange -3')
+console.log('\n\n---------coding challange-3')
 //1.solution
 const events = new Set(gameEvents.values());
 console.log(events);
