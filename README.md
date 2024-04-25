@@ -1,6 +1,6 @@
-# JavaScript Projects 🚀
+# JavaScript Playground 🚀
 
-Welcome to my JavaScript playground! This repository contains a variety of JavaScript projects and coding challenges.
+Welcome to my JavaScript playground! This repository contains a variety of JavaScript projects, coding challenges, and explorations of fundamental concepts.
 
 ## Coding Challenges 🧩
 
@@ -18,17 +18,27 @@ Explore a range of coding challenges categorized into three subfolders:
 
 - Explore miscellaneous coding challenges covering various topics.
 
-## Guess Number Project 🎲
+## Data Structures 🌲
 
-Guess Number Project is an interactive JavaScript project where users guess a number within a specified range.
+Explore different data structures implementations and concepts:
 
-## Modal Window 🖼️
+- Enhanced Object Literals 📜
+- Looping through Keys and Values 🔄
+- Maps 🗺️
+- Optional Chaining ⛓️
+- Rest Patterns 🔄
+- Sets 🧮
+- Spread Operator 💫
+- Strings 🔡
+- Destructuring Arrays 🔗
+- Destructuring Objects 📦
 
-Modal Window project showcases the implementation of modal dialogs in JavaScript displaying information or capturing user input.
+## Projects 💼
 
-## Pig Game 🐷
+Explore interactive JavaScript projects:
 
-Pig Game is a classic dice game implemented in JavaScript. Roll the dice, accumulate points, and strategize to win against your opponent.
-
+- Guess Number Project 🎲
+- Pig Game 🐷
+- Modal Window 🖼️
 
 Feel free to dive in, explore, and have fun with these projects! ✨
