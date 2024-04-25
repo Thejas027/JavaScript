@@ -1,5 +1,6 @@
 'use strict';
 
+// strings -1
 const airLine = 'TAP Air Portugal';
 const plane = 'A320';
 
@@ -32,6 +33,7 @@ checkMiddleSeat('11B');
 checkMiddleSeat('12W');
 checkMiddleSeat('13E');
 
+// strings - 2
 // methods in strings that convert it into upper or lowe case
 console.log(airLine.toLowerCase());
 console.log(airLine.toUpperCase());
@@ -93,3 +95,70 @@ checkBaggage(
 );
 
 checkBaggage('i have some snacks and have a pocket Knife');
+
+// STRINGS - 3
+
+// divider method (SPLIT)
+console.log('a+very+beautiful+day'.split('+')); // this gives array of strings
+console.log('Jonas Schmedtmann'.split(' '));
+
+// operations on strings and destructruing also done
+const [firstName, lastName] = 'Jonas schmedtmann'.split(' ');
+
+// JOIN METHOD TO JOIN THE TWO STRING VALUE
+const newName = ['Mr.', firstName, lastName.toLowerCase()].join(' ');
+console.log(newName);
+
+// function that capatalizes the first letter af any name, where split and join methods of string are used
+const captalizeName = function (name) {
+  const names = name.split(' ');
+  const nameUpper = [];
+
+  for (const n of names) {
+    // nameUpper.push(n[0].toUpperCase() + n.slice(1)); // method - 1
+    nameUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(nameUpper.join(' '));
+};
+
+captalizeName('thejas');
+captalizeName('rohit sharama');
+
+// padding in strings
+const message = 'welcome to airport';
+
+// PADSTART(N,' ');  used to add some string value at the start of the index , run and check once to know how it works
+console.log(message.padStart(30, 'hi '));
+console.log('Thejas'.padStart(12, 'HELLO '));
+
+//PADEND(N , ''); used to add some string value at the end of string
+console.log('HELLO '.padEnd(13, 'WELCOME'));
+
+//COMBINATION OF BOTH PADSTART AND PADEND
+console.log(
+  'Bruh! '.padStart(15, ' Welcome').padEnd(34, ', Thnks for comming')
+);
+
+// real word example of padstart and padend
+// credit card masking
+
+const maskCreditCard = function (number) {
+  // const str = String(number);   OR
+  const str = number + ' ';
+  const last = str.slice(-4);
+  console.log(last.padStart(str.length, '*'));
+};
+
+maskCreditCard(123341341);
+maskCreditCard('1345213453521');
+
+// reapts the string value
+const msg = 'Bad weather due to rain...All deparutre is delayed!! ';
+console.log(msg.repeat(5));
+
+// function on this 
+const planesInLine = function(n){
+  console.log(`${n} planes are delayed :${'✈️'.repeat(n)}`);
+}
+
+planesInLine(3);
