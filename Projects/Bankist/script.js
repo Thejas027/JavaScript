@@ -1,5 +1,5 @@
 'use strict';
-console.log('jjjjjji');
+
 // Data
 const account1 = {
   owner: 'Jonas Schmedtmann',
@@ -74,3 +74,24 @@ const displayMovements = function (movements) {
 };
 
 displayMovements(account1.movements);
+
+//balance part
+
+const calcDisplayMovements = function (movement) {
+  const balance = movement.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance}EUR`;
+};
+
+calcDisplayMovements(account1.movements);
+// username section
+const createUserNames = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner // acc.username is the new property that has been created
+      .toLowerCase()
+      .split(' ')
+      .map(name => name[0])
+      .join(' ');
+  });
+};
+
+createUserNames(accounts);
