@@ -52,3 +52,21 @@ const totalwithdrawls = movements.reduce(function (acc, curr) {
 console.log(totalwithdrawls);
 //another way of finding the total withdrawals
 const totWithdrawls = console.log(balance - totalDeposit);
+
+//-------------some other stuffs using reduce method
+// to find the maximum in a movement array or any array
+const maxelement = movements.reduce((acc, cur) => {
+  if (acc < cur) acc = cur;
+  return acc;
+}, 0);
+
+console.log(maxelement);
+
+//chaning of methods
+
+const totalDepositBal = movements
+  .filter(mov => mov > 0)
+  .map(mov => mov * 1.1)
+  .reduce((acc, curr) => acc + curr, 0);
+
+console.log(totalDepositBal);
