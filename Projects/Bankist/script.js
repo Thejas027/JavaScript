@@ -58,9 +58,12 @@ const inputCloseUsername = document.querySelector('.form_input--user');
 const inputClosePin = document.querySelector('.form_input--pin');
 
 // display movements part , where this function dispalys all the deposits and with drawals in the container movements section
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   containerMovements.innerHTML = '';
-  movements.forEach(function (mov, i) {
+
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
+
+  movs.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `
     <div class="movements_row">
@@ -75,7 +78,6 @@ const displayMovements = function (movements) {
 };
 
 //calculates the total balance , and displays it at the balance part
-
 const calcDisplayMovements = function (accns) {
   accns.balance = accns.movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${accns.balance}€`;
@@ -113,9 +115,9 @@ const createUserNames = function (accs) {
       .join('');
   });
 };
-// function must be called here itself so that user name property gets created in each account.
 createUserNames(accounts);
 
+//Refactoring
 const updateUI = function (acc) {
   // display movements
   displayMovements(acc.movements);
@@ -149,7 +151,6 @@ btnLogin.addEventListener('click', function (e) {
 });
 
 // transfer button
-
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -172,6 +173,21 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+//request loan
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const loanAmt = Number(inputLoanAmount.value);
+  if (
+    loanAmt > 0 &&
+    currentAccount.movements.some(mov => mov >= loanAmt * 0.1)
+  ) {
+    // add movement
+    currentAccount.movements.push(loanAmt);
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
 //button close
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
@@ -182,9 +198,17 @@ btnClose.addEventListener('click', function (e) {
     const index = accounts.findIndex(
       acc => acc.username === currentAccount.username
     );
-    console.log(index)
+    console.log(index);
     accounts.splice(index, 1);
     containerApp.style.opacity = 0;
   }
   inputCloseUsername.value = inputClosePin.value = '';
+});
+
+// sort btn
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });
