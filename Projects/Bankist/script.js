@@ -57,6 +57,7 @@ const inputLoanAmount = document.querySelector('.form_input--loan-amount');
 const inputCloseUsername = document.querySelector('.form_input--user');
 const inputClosePin = document.querySelector('.form_input--pin');
 
+// display movements part , where this function dispalys all the deposits and with drawals in the container movements section
 const displayMovements = function (movements) {
   containerMovements.innerHTML = '';
   movements.forEach(function (mov, i) {
@@ -64,7 +65,7 @@ const displayMovements = function (movements) {
     const html = `
     <div class="movements_row">
     <div class="movements_type movements_type--${type}">${i + 1}${type}</div>
-    <div class="movements_value">${mov}</div>
+    <div class="movements_value">${mov}€</div>
   </div>
   `;
 
@@ -73,25 +74,117 @@ const displayMovements = function (movements) {
   });
 };
 
-displayMovements(account1.movements);
+//calculates the total balance , and displays it at the balance part
 
-//balance part
-
-const calcDisplayMovements = function (movement) {
-  const balance = movement.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance}EUR`;
+const calcDisplayMovements = function (accns) {
+  accns.balance = accns.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${accns.balance}€`;
 };
 
-calcDisplayMovements(account1.movements);
-// username section
+// summary part, where it calculates the total incomes,outgoing and interest rate and displays it on the summary section
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
+    .filter(mov => mov > 0)
+    .reduce((acc, curr) => acc + curr, 0);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const outGoingMoney = acc.movements
+    .filter(mov => mov < 0)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  labelSumOut.textContent = `${Math.abs(outGoingMoney)}€`;
+
+  const interest = acc.movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * acc.interestRate) / 100)
+    .filter(mov => mov >= 5)
+    .reduce((acc, interest) => acc + interest, 0);
+
+  labelSumInterest.textContent = `${interest}€`;
+};
+
+// username section,where for login purpose the username is created..
 const createUserNames = function (accs) {
   accs.forEach(function (acc) {
     acc.username = acc.owner // acc.username is the new property that has been created
       .toLowerCase()
       .split(' ')
       .map(name => name[0])
-      .join(' ');
+      .join('');
   });
 };
-
+// function must be called here itself so that user name property gets created in each account.
 createUserNames(accounts);
+
+const updateUI = function (acc) {
+  // display movements
+  displayMovements(acc.movements);
+  //display balance
+  calcDisplayMovements(acc);
+  //display summary
+  calcDisplaySummary(acc);
+};
+
+//login section
+let currentAccount;
+btnLogin.addEventListener('click', function (e) {
+  // prevent form from submitting
+  e.preventDefault();
+
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    //display ui
+    labelWelcome.textContent = `Welcome back,${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+    //clear feilds
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+    updateUI(currentAccount);
+  }
+});
+
+// transfer button
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+  inputTransferTo.value = inputTransferAmount.value = ' ';
+  inputTransferAmount.blur();
+  if (
+    amount > 0 &&
+    receiverAcc &&
+    currentAccount.balance >= amount &&
+    receiverAcc?.username !== currentAccount.username
+  ) {
+    // doing the transfer
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+    updateUI(currentAccount);
+  }
+});
+
+//button close
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    console.log(index)
+    accounts.splice(index, 1);
+    containerApp.style.opacity = 0;
+  }
+  inputCloseUsername.value = inputClosePin.value = '';
+});
