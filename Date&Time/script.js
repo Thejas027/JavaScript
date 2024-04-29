@@ -111,4 +111,32 @@ console.log('Kar-INDIA : ', new Intl.NumberFormat('kn-IN', option).format(num));
 
 //----------Timers , set time out and set interval
 
-setTimeout(() => console.log('here is your pizza  '), 3000);  // it takes 3 seconds to console it, manually this has been set 
+//setTimeOut method
+const ingredeints = ['olives', 'spinach'];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => console.log(`here is your pizza with ${ing1} and ${ing2} `),
+  3000,
+  ...ingredeints
+); // it takes 3 seconds to console it, manually this has been set
+
+console.log('waiting....'); // displays first and then the pizza delivered statement is executed
+
+if (ingredeints.includes('spinach')) clearTimeout(pizzaTimer);
+
+//setTimeInterval method
+setInterval(function () {
+  const now = new Date();
+  console.log(now);
+}, 1000); // at console for every second the time gets displayed at console
+
+//challange
+
+setInterval(() => {
+  const present = new Date();
+  const hour = present.getHours();
+  const min = present.getMinutes();
+  const sec = present.getSeconds();
+  console.log(`${hour} : ${min} : ${sec}`);
+}, 1000);
+
+//countdown time interaval
