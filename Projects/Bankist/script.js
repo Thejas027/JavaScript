@@ -9,14 +9,14 @@ const account1 = {
   pin: 1111,
 
   movementsDates: [
-    '2019-11-18T21:31:17.178Z',
-    '2019-12-23T07:42:02.383Z',
-    '2020-01-28T09:15:04.904Z',
-    '2020-04-01T10:17:24.185Z',
-    '2024-04-02T14:11:59.604Z',
-    '2020-05-21T17:01:17.194Z',
-    '2024-04-24T23:36:17.929Z',
-    '2024-04-28T10:51:36.790Z',
+    '2024-01-18T21:31:17.178Z',
+    '2024-02-01T07:42:02.383Z',
+    '2024-04-02T09:15:04.904Z',
+    '2024-04-20T10:17:24.185Z',
+    '2024-04-23T14:11:59.604Z',
+    '2020-05-26T17:01:17.194Z',
+    '2024-04-27T23:36:17.929Z',
+    '2024-04-29T10:51:36.790Z',
   ],
   currency: 'EUR',
   locale: 'pt-PT',
@@ -29,14 +29,14 @@ const account2 = {
   pin: 2222,
 
   movementsDates: [
-    '2019-11-01T13:15:33.035Z',
-    '2019-11-30T09:48:16.867Z',
-    '2019-12-25T06:04:23.907Z',
-    '2020-01-25T14:18:46.235Z',
-    '2020-02-05T16:33:06.386Z',
-    '2020-04-10T14:43:26.374Z',
-    '2020-06-25T18:49:59.371Z',
-    '2020-07-26T12:01:20.894Z',
+    '2024-01-18T21:31:17.178Z',
+    '2024-02-01T07:42:02.383Z',
+    '2024-04-02T09:15:04.904Z',
+    '2024-04-20T10:17:24.185Z',
+    '2024-04-24T14:11:59.604Z',
+    '2020-05-27T17:01:17.194Z',
+    '2024-04-28T23:36:17.929Z',
+    '2024-04-29T10:51:36.790Z',
   ],
   currency: 'USD',
   locale: 'en-US',
@@ -48,14 +48,14 @@ const account3 = {
   interestRate: 0.7,
   pin: 3333,
   movementsDates: [
-    '2019-11-18T21:31:17.178Z',
-    '2019-12-23T07:42:02.383Z',
-    '2020-01-28T09:15:04.904Z',
-    '2020-04-01T10:17:24.185Z',
-    '2020-05-08T14:11:59.604Z',
-    '2020-05-27T17:01:17.194Z',
-    '2020-07-11T23:36:17.929Z',
-    '2020-07-12T10:51:36.790Z',
+    '2024-01-18T21:31:17.178Z',
+    '2024-02-11T07:42:02.383Z',
+    '2024-04-22T09:15:04.904Z',
+    '2024-04-20T10:17:24.185Z',
+    '2024-04-23T14:11:59.604Z',
+    '2020-05-26T17:01:17.194Z',
+    '2024-04-28T23:36:17.929Z',
+    '2024-04-30T10:51:36.790Z',
   ],
   currency: 'JPY',
   locale: 'pt-PT',
@@ -67,14 +67,14 @@ const account4 = {
   interestRate: 1,
   pin: 4444,
   movementsDates: [
-    '2019-11-01T13:15:33.035Z',
-    '2019-11-30T09:48:16.867Z',
-    '2019-12-25T06:04:23.907Z',
-    '2020-01-25T14:18:46.235Z',
-    '2020-02-05T16:33:06.386Z',
-    '2020-04-10T14:43:26.374Z',
-    '2020-06-25T18:49:59.371Z',
-    '2020-07-26T12:01:20.894Z',
+    '2024-01-18T21:31:17.178Z',
+    '2024-02-07T07:42:02.383Z',
+    '2024-04-12T09:15:04.904Z',
+    '2024-04-15T10:17:24.185Z',
+    '2024-04-24T14:11:59.604Z',
+    '2020-05-27T17:01:17.194Z',
+    '2024-04-28T23:36:17.929Z',
+    '2024-04-29T10:51:36.790Z',
   ],
   currency: 'USD',
   locale: 'en-US',
@@ -108,7 +108,7 @@ const inputLoanAmount = document.querySelector('.form_input--loan-amount');
 const inputCloseUsername = document.querySelector('.form_input--user');
 const inputClosePin = document.querySelector('.form_input--pin');
 
-//Formatting the dates
+//------------------------Formatting the dates
 
 const formatMovementDate = function (date) {
   const calcDaysPassed = (date1, date2) =>
@@ -128,7 +128,9 @@ const formatMovementDate = function (date) {
   const days = new Intl.DateTimeFormat('kn-IN').format(date);
   return days;
 };
-//currency formatter
+
+//-------------currency formatter
+
 const currencyFormat = function (value, locale, currency) {
   return new Intl.NumberFormat(locale, {
     style: 'currency',
@@ -136,7 +138,8 @@ const currencyFormat = function (value, locale, currency) {
   }).format(value);
 };
 
-// display movements part , where this function dispalys all the deposits and with drawals in the container movements section
+//------------display movements part , where this function dispalys all the deposits and with drawals in the container movements section
+
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
 
@@ -165,7 +168,8 @@ const displayMovements = function (acc, sort = false) {
   });
 };
 
-//calculates the total balance , and displays it at the balance part
+//--------------------calculates the total balance , and displays it at the balance part
+
 const calcDisplayMovements = function (accns) {
   accns.balance = accns.movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = currencyFormat(
@@ -175,7 +179,9 @@ const calcDisplayMovements = function (accns) {
   );
 };
 
-// summary part, where it calculates the total incomes,outgoing and interest rate and displays it on the summary section
+//------------------------ summary part
+// where it calculates the total incomes,outgoing and interest rate and displays it on the summary section
+
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
@@ -199,13 +205,14 @@ const calcDisplaySummary = function (acc) {
     .reduce((acc, interest) => acc + interest, 0);
 
   labelSumInterest.textContent = currencyFormat(
-    interest ,
+    interest,
     acc.locale,
     acc.currency
   );
 };
 
 // username section,where for login purpose the username is created..
+
 const createUserNames = function (accs) {
   accs.forEach(function (acc) {
     acc.username = acc.owner // acc.username is the new property that has been created
@@ -218,6 +225,7 @@ const createUserNames = function (accs) {
 createUserNames(accounts);
 
 //Refactoring
+
 const updateUI = function (acc) {
   // display movements
   displayMovements(acc);
@@ -227,8 +235,42 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
-//login section
-let currentAccount;
+// countdown timer section
+
+const startLogOutTimer = function () {
+  const tick = function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const sec = String(time % 60).padStart(2, 0);
+
+    //in each call print the time
+    labelTimer.textContent = `${min}:${sec}`;
+
+    //when time = 0 , stop timer and logout
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = 'Log in to get started';
+      containerApp.style.opacity = 0;
+    }
+    //decrease by 1s
+    time--;
+  };
+
+  //set time to 5 min
+  let time = 10;
+  // call for every second
+  tick();
+  const timer = setInterval(tick, 1000);
+
+  inputTransferTo.value = inputTransferAmount.value = ' ';
+  inputLoanAmount.value = '';
+  inputCloseUsername.value = inputClosePin.value = '';
+  return timer;
+};
+
+//--------------------------login section
+
+let currentAccount, timer;
+
 btnLogin.addEventListener('click', function (e) {
   // prevent form from submitting
   e.preventDefault();
@@ -273,11 +315,14 @@ btnLogin.addEventListener('click', function (e) {
     //clear feilds
     inputLoginUsername.value = inputLoginPin.value = '';
     inputLoginPin.blur();
+
+    if (timer) clearInterval(timer);
+    timer = startLogOutTimer();
     updateUI(currentAccount);
   }
 });
 
-// transfer button
+//-------------------------transfer button
 btnTransfer.addEventListener('click', function (e) {
   e.preventDefault();
 
@@ -303,10 +348,14 @@ btnTransfer.addEventListener('click', function (e) {
 
     //update UI
     updateUI(currentAccount);
+
+    //set new time interval
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
 });
 
-//request loan
+//----------------------------request loan
 btnLoan.addEventListener('click', function (e) {
   e.preventDefault();
   const loanAmt = Math.floor(inputLoanAmount.value);
@@ -314,19 +363,25 @@ btnLoan.addEventListener('click', function (e) {
     loanAmt > 0 &&
     currentAccount.movements.some(mov => mov >= loanAmt * 0.1)
   ) {
-    // add movement
-    currentAccount.movements.push(loanAmt);
+    setTimeout(function () {
+      // add movement
+      currentAccount.movements.push(loanAmt);
 
-    //add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      //add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    //update UI
-    updateUI(currentAccount);
+      //update UI
+      updateUI(currentAccount);
+
+      //reset the time interval
+      clearInterval(timer);
+      timer = startLogOutTimer();
+    }, 2500);
   }
   inputLoanAmount.value = '';
 });
 
-//button close
+//-----------------button close
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
   if (
@@ -343,7 +398,7 @@ btnClose.addEventListener('click', function (e) {
   inputCloseUsername.value = inputClosePin.value = '';
 });
 
-// sort btn
+//------------------sort btn
 let sorted = false;
 btnSort.addEventListener('click', function (e) {
   e.preventDefault();
