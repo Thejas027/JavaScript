@@ -97,7 +97,36 @@ h1.addEventListener('mouseenter', alertH1); //method to add a listener
 
 setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000); // method to remove the added event
 
-//---Another type of event called 'onmouseenter' demo , 
+//---Another type of event called 'onmouseenter' demo ,
 // h1.onmouseenter = function (e) {
 //   alert('onmouseenter: Great! You are reading the heading :D');
 // };
+
+// to see how does it work just copy paste it to the bakistMarketPage's js file and click on nav ,
+// this shows how bubbling pharase and target phase are being capturaed
+
+// //event propagation practise
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+// const randomClour = () =>
+//   `rgb(${randomInt(0, 255)} , ${randomInt(0, 255)} , ${(0, 255)})`;
+
+// document.querySelector('.nav_link').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomClour();
+
+//   console.log('LINK', e.target, e.currentTarget); // returns the current event and targeted event
+//   console.log(e.currentTarget === this); // retuns true , both are same here
+
+//   // to stop the propagation
+//   e.stopPropagation();
+// });
+
+// document.querySelector('.nav_links').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomClour();
+//   console.log('CONTANIER', e.target, e.currentTarget);
+// });
+
+// document.querySelector('.nav').addEventListener('click', function (e) {
+//   this.style.backgroundColor = randomClour();
+//   console.log('NAV', e.target, e.currentTarget);
+// });
