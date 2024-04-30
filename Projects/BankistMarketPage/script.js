@@ -8,6 +8,11 @@ const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 const btnScrollTo = document.querySelector('.btn--scroll-to');
 const section1 = document.querySelector('#section--1');
 
+const tabs = document.querySelectorAll('.operations_tab');
+const tabContainer = document.querySelector('.operations_tab-container');
+const tabContent = document.querySelectorAll('.operations_content');
+
+const nav = document.querySelector('.nav');
 ////////////////////////
 //modal window , Open account
 const openModal = function (e) {
@@ -92,4 +97,48 @@ document.querySelector('.nav_links').addEventListener('click', function (e) {
   }
 });
 
-///////
+/////////////////////////
+//Tabbed content
+
+//event delegation method
+tabContainer.addEventListener('click', function (e) {
+  //matching startergy
+  const clicked = e.target.closest('.operations_tab');
+
+  //Guard clause
+  if (!clicked) return;
+
+  //removing the active classes
+  tabs.forEach(t => t.classList.remove('operations_tab--active'));
+  tabContent.forEach(c => c.classList.remove('operations_content--active'));
+
+  //active tab
+  clicked.classList.add('operations_tab--active');
+
+  //active content area
+  document
+    .querySelector(`.operations_content--${clicked.dataset.tab}`)
+    .classList.add('operations_content--active');
+});
+
+//////////////////////////
+//menu fade animation
+
+//refactoring the code
+
+const handelHover = function (e) {
+  if (e.target.classList.contains('nav_link')) {
+    const link = e.target;
+    const siblings = link.closest('.nav').querySelectorAll('.nav_link');
+    const logo = link.closest('.nav').querySelector('img');
+
+    siblings.forEach(el => {
+      if (el !== link) el.style.opacity = this;
+      logo.style.opacity = this;
+    });
+  }
+};
+
+//passing "argument" into handler
+nav.addEventListener('mouseover', handelHover.bind(0.5));
+nav.addEventListener('mouseout', handelHover.bind(1));
