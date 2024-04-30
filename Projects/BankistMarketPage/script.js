@@ -5,6 +5,11 @@ const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
 
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+////////////////////////
+//modal window , Open account
 const openModal = function (e) {
   e.preventDefault();
   modal.classList.remove('hidden');
@@ -27,11 +32,8 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
+////////////////////////
 // smooth scrolling of learn more button
-
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
-
 btnScrollTo.addEventListener('click', function (e) {
   //get the cor-ordinates
   const s1coords = section1.getBoundingClientRect();
@@ -59,10 +61,35 @@ btnScrollTo.addEventListener('click', function (e) {
   //   behavior: 'smooth',
   // });
 
-  section1.scrollIntoView({ behavior: 'smooth' }); 
+  section1.scrollIntoView({ behavior: 'smooth' });
 });
 
-const h1 = document.querySelector('h1');
-h1.addEventListener('mouseenter', function () {
-  alert('added event listener');
+/////////////////////////
+//Page navigation
+
+//Method 1 , good but it creates, 3 copies for each nav
+// const pageNavigator = document.querySelectorAll('.nav_link');
+// pageNavigator.forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href'); // getAttribute is used because, to select only the herf.
+//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+//method2,
+// the above problem can be solved by,
+//Event delegation method
+//steps
+//1.add event listener to common parent element
+//2.Determine what element originated the event
+document.querySelector('.nav_links').addEventListener('click', function (e) {
+  e.preventDefault();
+  // mataching startergy
+  if (e.target.classList.contains('nav_link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
+  }
 });
+
+///////
