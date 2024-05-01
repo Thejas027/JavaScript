@@ -85,6 +85,7 @@ logo.classList.contains('c');
 // Don't use
 // logo.clasName = 'jonas';  // changes the whole property name in program
 
+////////////////////////////////////////////
 //----------Types of events and event handlers
 
 const h1 = document.querySelector('h1');
@@ -130,3 +131,37 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000); // method
 //   this.style.backgroundColor = randomClour();
 //   console.log('NAV', e.target, e.currentTarget);
 // });
+
+///////////
+//working of Intersection observer API.
+
+//creating a new observer
+
+const obsCallback = function (entries, observer) {
+  entries.forEach(entry => console.log(entry));
+};
+
+const obsOptions = {
+  root: null,
+  threshold: [0, 0.2],
+};
+
+const observer = new IntersectionObserver(obsCallback, obsOptions);
+observer.observe(section1);
+
+/////////////////////////////////
+// Lifecycle DOM Events
+document.addEventListener('DOMContentLoaded', function (e) {
+  //does not wait for images and other stuff to get loaded, it loads the html,css and js file
+  console.log('HTML parsed and DOM tree built!', e);
+});
+
+window.addEventListener('load', function (e) {
+  console.log('Page fully loaded', e);
+});
+
+window.addEventListener('beforeunload', function (e) {
+  e.preventDefault();
+  console.log(e);
+  e.returnValue = '';
+});
