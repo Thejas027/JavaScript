@@ -55,3 +55,87 @@ Array.prototype.unique = function () {
 };
 
 console.log(arr.unique()); // gives the unique elements from array, where its of prototype
+
+//---------------creating the classed in ES6
+
+// class expression
+// const PersonCl = class {};
+
+// class declaration
+
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+
+  //instance methods
+  //method will be added to prototype , property
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  // getter method usage , its also an prototype
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  // set a propety on already exists
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not full name`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  //static methods
+  static hey() {
+    console.log('Hey there ');
+  }
+}
+
+// calling a class with new keyword
+const jessica = new PersonCl('Jessice Willams', 1999);
+jessica.calcAge();
+console.log(jessica);
+
+// const walter = new PersonCl('walter', 2000);
+
+//---------calling the static methods
+PersonCl.hey();
+
+//console.log(jessica.__proto__ === PersonCl.prototype);
+
+// //even methods can be created using prototype keyword as follow,
+// PersonCl.prototype.greet = function () {
+//   console.log(`Hey ${this.firstName}`);
+// };
+// jessica.greet();
+
+// getter method
+console.log(jessica.age);
+
+// example of setters and getters method
+
+const account = {
+  owner: 'Jonas',
+  movements: [200, 530, 130],
+
+  // getter method
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  //setter method an parameter must be passed
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+
+console.log(account.latest); // getting the value
+
+//setting the value
+account.latest = 90;
+console.log(account.movements); //---> 90 will be added to movements array of account
