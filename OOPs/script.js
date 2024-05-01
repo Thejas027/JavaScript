@@ -1,5 +1,6 @@
 'use strict';
 
+console.log('\n\n---------method-1---------------');
 const Person = function (firstName, birthYear) {
   //Instances
   this.firstName = firstName;
@@ -56,13 +57,15 @@ Array.prototype.unique = function () {
 
 console.log(arr.unique()); // gives the unique elements from array, where its of prototype
 
-//---------------creating the classed in ES6
+//----------------------- method-2
+//creating the classed in ES6
 
 // class expression
 // const PersonCl = class {};
 
 // class declaration
 
+console.log('\n\n---------method-2---------------');
 class PersonCl {
   constructor(fullName, birthYear) {
     this.fullName = fullName;
@@ -139,3 +142,29 @@ console.log(account.latest); // getting the value
 //setting the value
 account.latest = 90;
 console.log(account.movements); //---> 90 will be added to movements array of account
+
+//-----------method-3
+// creating a class using object.create() method
+
+// no constructor function and no new operator on calling this object
+console.log('\n\n---------method-3---------------');
+const personProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(personProto); // this returns a new object
+console.log(steven);
+steven.name = 'Steven';
+steven.birthYear = 2002;
+steven.calcAge();
+
+//
+const sarah = Object.create(personProto);
+init('Sarah', 2003);
+sarah.calcAge();
