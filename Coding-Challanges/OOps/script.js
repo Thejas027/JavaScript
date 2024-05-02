@@ -65,7 +65,6 @@ Test data:
 § Data car 1: 'Ford' going at 120 km/h
 */
 
-
 console.log('\n\n----------coding challange-2');
 class CarEs6 {
   constructor(make, speed) {
@@ -123,30 +122,95 @@ Test data:
  Data car 1: 'Tesla' going at 120 km/h, with a charge of 23%
 */
 
-console.log('\n\n---Coding challange -3');
+// console.log('\n\n---Coding challange -3');
 
+// const EV = function (make, speed, charge) {
+//   Car.call(this, make, speed);
+//   this.charge = charge;
+// };
 
-const EV = function (make, speed, charge) {
-  Car.call(this, make, speed);
-  this.charge = charge;
-};
+// //linking the prototype
+// EV.prototype = Object.create(Car.prototype);
 
-//linking the prototype
-EV.prototype = Object.create(Car.prototype);
+// EV.prototype.chargeBattery = function (chargeTo) {
+//   this.charge = chargeTo;
+// };
 
-EV.prototype.chargeBattery = function (chargeTo) {
-  this.charge = chargeTo;
-};
+// EV.prototype.accelerate = function () {
+//   this.speed += 20;
+//   this.charge--;
+//   console.log(
+//     `Tesla is going at a speed of ${this.speed} km/h with a charge of ${this.charge} %`
+//   );
+// };
 
-EV.prototype.accelerate = function () {
-  this.speed += 20;
-  this.charge--;
-  console.log(
-    `Tesla is going at a speed of ${this.speed} km/h with a charge of ${this.charge} %`
-  );
-};
+// const tesla = new EV('Tesla', 120, 23);
+// // tesla.chargeBattery(90);
+// console.log(tesla);
+// tesla.accelerate();
 
-const tesla = new EV('Tesla', 120, 23);
-// tesla.chargeBattery(90);
-console.log(tesla);
-tesla.accelerate();
+/////////////
+// Coding Challenge #4
+
+/* 
+1. Re-create challenge #3, but this time using ES6 classes: create an 'EVCl' child class of the 'CarCl' class
+2. Make the 'charge' property private;
+3. Implement the ability to chain the 'accelerate' and 'chargeBattery' methods of this class, and also update the 'brake' method in the 'CarCl' class. They experiment with chining!
+
+DATA CAR 1: 'Rivian' going at 120 km/h, with a charge of 23%
+*/
+
+console.log('------------------conding challange 4');
+
+class CarsCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed += 20;
+    console.log(`${this.make} is going at a speed of ${this.speed}`);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(`${this.make} is going at a speed of ${this.speed} `);
+  }
+
+  get SpeedUS() {
+    return this.speed / 1.6;
+  }
+
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
+  }
+}
+
+class EVcl extends CarsCl {
+  #charge;
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+
+  chargeBattery(chargeTo) {
+    this.#charge += chargeTo;
+    return this;
+  }
+
+  accelerate(speed) {
+    this.speed += speed;
+    this.#charge--;
+    console.log(
+      `Tesla is going at a speed of ${this.speed} km/h with a charge of ${this.#charge} %`
+    );
+    return this;
+  }
+}
+
+const rivian = new EVcl('Rivian', 120, 23);
+console.log(rivian);
+
+rivian.accelerate(50).chargeBattery(45).accelerate(20).chargeBattery(10).accelerate(100);
+console.log(rivian);
