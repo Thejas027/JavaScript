@@ -36,16 +36,19 @@ class Account {
   // Public interfaces
   deposit(val) {
     this.#movements.push(val);
+    return this;
   }
 
   withdraw(val) {
     this.deposit(-val);
+    return this;
   }
 
   reqLoan(val) {
     if (this.#approval(val)) {
       this.deposit(val);
       console.log('loan approved');
+      return this;
     }
   }
 
@@ -78,3 +81,13 @@ console.log(acc1.getMovements()); // it can only be accessed but it cant do any 
 
 //calling the static methods outside the class
 Account.helper();
+
+///////----- CHAINING METHODS
+
+// similar to array chaining where chaing is applied on arrays  as  array.filter().map().reduce
+// here also chaing method can be applied as shown below  (just return the object)
+
+acc1.deposit(300).deposit(200).withdraw(300).reqLoan(25000).withdraw(10000); // this gives error intially so added the return statememt on deposit(),withdraw() and reqLoan() methods
+
+// console the get movements to see the changes
+console.log(acc1.getMovements());
