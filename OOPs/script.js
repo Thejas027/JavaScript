@@ -166,5 +166,97 @@ steven.calcAge();
 
 //
 const sarah = Object.create(personProto);
-init('Sarah', 2003);
-sarah.calcAge();
+sarah.init('Sarah', 2003);
+// sarah.calcAge();
+
+/////////////////////////////////////////////////////////////////////////////////
+//Inheritance between classes
+console.log('\n\n---------Inheritance between classes');
+console.log('\n\n-------------method -1\n\n');
+
+//---------using constructor class
+const person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  person.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+//linking prototypes
+Student.prototype = Object.create(person.prototype);
+
+Student.prototype.introduce = function () {
+  console.log(`hello i am ${this.firstName} and i do ${this.course}`);
+};
+
+const mike = new Student('Mike', 2020, 'cse');
+console.log(mike);
+mike.introduce();
+mike.calcAge(); // because of linking the prototype this method can be called
+
+console.log(Student.__proto__);
+console.log(Student.__proto__.__proto__);
+
+// this must return true, this gives the prototype chaining
+console.log(Student instanceof Student);
+console.log(Student instanceof person); // this gives true because of linking of prototypes
+console.log(Student instanceof Object);
+
+console.dir(Student.prototype.constructor);
+
+/////////////////////////////////////////////////
+
+//inheritance using ES6  classes
+// getting inherited from the above personCll ES6 class
+console.log('\n\n---------method-2 ');
+class studentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    super(fullName, birthYear);
+    this.course = course;
+  }
+  introduce() {
+    console.log(`hey iam ${this.fullName} and i do ${this.course} course`);
+  }
+  //over riding the parent class method
+
+  calcAge() {
+    {
+      console.log('I over rided the calc age method from the parent');
+    }
+  }
+}
+
+const martha = new studentCl('Martha Jones', 2012, 'CSE');
+martha.introduce();
+martha.calcAge();
+
+/////////////////////////////////////
+// method 3
+// inherting the class form the parent class using object.create() method
+//getting inhertied form the abvoe personPrototype class
+
+console.log('\n\n----------method 3');
+
+const StudentProto = Object.create(personProto);
+
+StudentProto.init = function (firstName, birthYear, course) {
+  personProto.init.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+StudentProto.introduce = function () {
+  console.log(`i am ${this.firstName} and i do ${this.course}`);
+};
+
+const jay = Object.create(StudentProto);
+jay.init('Jay', 2013, 'cse');
+console.log(jay);
+jay.introduce();
+jay.calcAge();
