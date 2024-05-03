@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="./Imgs/icon.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""
+    ></script>
+
+    <script defer src="./script.js"></script>
+    <title>mapty // Map your workouts</title>
+  </head>
+  <body>
+    <div class="sidebar">
+      <img src="./Imgs/logo.png" alt="Logo" class="logo" />
+
+      <ul class="workouts">
+        <form class="form hidden">
+          <div class="form-row">
+            <label class="form-label">Type</label>
+            <select class="form-input form-input--type">
+              <option value="running">Running</option>
+              <option value="cycling">Cycling</option>
+              <!-- <option value="Walking">Walking</option>
+              <option value="jogging">Jogging</option> -->
+            </select>
+          </div>
+          <div class="form-row">
+            <label class="form-label">Distance</label>
+            <input class="form-input form-input--distance" placeholder="k m" />
+          </div>
+          <div class="form-row">
+            <label class="form-label">Duration</label>
+            <input class="form-input form-input--duration" placeholder="min" />
+          </div>
+          <div class="form-row">
+            <label class="form-label">Cadence</label>
+            <input
+              class="form-input form-input--cadence"
+              placeholder="step/min"
+            />
+          </div>
+          <div class="form-row form-row--hidden">
+            <label class="form-label">Elev Gain</label>
+            <input
+              class="form-input form-input--elevation"
+              placeholder="meters"
+            />
+          </div>
+          <button class="form-btn">OK</button>
+        </form>
+
+        <!-- <li class="workout workout--running" data-id="1234567890">
+          <h2 class="workout-title">Running on April 24</h2>
+          <div class="workout-details">
+            <span class="workout-icon">🏃‍♂️</span>
+            <span class="workout-value">6.6</span>
+            <span class="workout-unit">km</span>
+          </div>
+
+          <div class="workout-details">
+            <span class="workout-icon">⏱</span>
+            <span class="workout-value">23</span>
+            <span class="workout-unit">min</span>
+          </div>
+
+          <div class="workout-details">
+            <span class="workout-icon">⚡️</span>
+            <span class="workout-value">4.6</span>
+            <span class="workout-unit">min/km</span>
+          </div>
+          <div class="workout-details">
+            <span class="workout-icon">🦶🏼</span>
+            <span class="workout-value">178</span>
+            <span class="workout-unit">m</span>
+          </div>
+        </li>
+        <li class="workout workout--cycling" data-id="1234567891">
+          <h2 class="workout-title">Cycling on April 25</h2>
+          <div class="workout-details">
+            <span class="workout-icon">🚵</span>
+            <span class="workout-value">25</span>
+            <span class="workout-unit">km</span>
+          </div>
+
+          <div class="workout-details">
+            <span class="workout-icon">⏱</span>
+            <span class="workout-value">95</span>
+            <span class="workout-unit">min</span>
+          </div>
+          <div class="workout-details">
+            <span class="workout-icon">⚡️</span>
+            <span class="workout-value">16</span>
+            <span class="workout-unit">km/h</span>
+          </div>
+          <div class="workout-details">
+            <span class="workout-icon">⛰</span>
+            <span class="workout-value">223</span>
+            <span class="workout-unit">m</span>
+          </div>
+        </li> -->
+
+      
+
+      <p class="copyright">&copy; Copyright</p>
+    </div>
+
+    <div id="map"></div>
+  </body>
+</html>
