@@ -326,7 +326,7 @@ class App {
     });
   }
 
-  resizeTo() {
+  reset() {
     localStorage.removeItem('workouts');
     location.reload();
   }
