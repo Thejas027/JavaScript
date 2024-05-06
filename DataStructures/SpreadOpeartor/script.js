@@ -42,7 +42,7 @@ console.log(`
 2.The merge array of starter and mainmenu : [${arrayMerge}]
 `);
 
-// shows how speed operator can be used on strings also
+// shows how spread operator can be used on strings also
 console.log(
   '\n\n-----Showing that spread operator can be used on strings as well------\n\n'
 );
