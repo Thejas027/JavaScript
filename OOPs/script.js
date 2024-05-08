@@ -7,7 +7,7 @@ const Person = function (firstName, birthYear) {
   this.birthYear = birthYear;
 };
 
-// callig of the object
+// calling the object
 const jonas = new Person('Jonas', 1991);
 console.log(jonas);
 
@@ -30,7 +30,7 @@ console.log(jonas.__proto__ === Person.prototype); //returns true
 console.log(Person.prototype.isPrototypeOf(jonas)); //reatuns true
 console.log(Person.prototype.isPrototypeOf(Person)); //returns false
 
-Person.prototype.species = 'Home Spaiens'; // where the person does not holds the property of species but the prototype inside the person holds the property
+Person.prototype.species = 'Homo Spaiens'; // where the person does not holds the property of species but the prototype inside the person holds the property
 console.log(jonas.species, matilda.species);
 
 console.log(jonas.hasOwnProperty('firstName')); //returns true
@@ -58,7 +58,7 @@ Array.prototype.unique = function () {
 console.log(arr.unique()); // gives the unique elements from array, where its of prototype
 
 //----------------------- method-2
-//creating the classed in ES6
+//creating the classes in ES6
 
 // class expression
 // const PersonCl = class {};
@@ -192,7 +192,7 @@ const Student = function (firstName, birthYear, course) {
 //linking prototypes
 Student.prototype = Object.create(person.prototype);
 
-Student.prototype.introduce = function () {
+Student.prototype.introduce = function () {   // creating the new property
   console.log(`hello i am ${this.firstName} and i do ${this.course}`);
 };
 
@@ -246,8 +246,10 @@ console.log('\n\n----------method 3');
 
 const StudentProto = Object.create(personProto);
 
+// here init is a new property that will be created in a studentproto type object 
+
 StudentProto.init = function (firstName, birthYear, course) {
-  personProto.init.call(this, firstName, birthYear);
+  personProto.init.call(this, firstName, birthYear);  // method to inherit 
   this.course = course;
 };
 
