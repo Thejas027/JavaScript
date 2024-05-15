@@ -1,7 +1,7 @@
 .prettierrc
-.txt
-node_modules
-dist
-.parcel-cache
-.DS_Store
-.png
+.txt/
+node_modules/
+dist/
+.parcel-cache/
+.DS_Store/
+.png/
